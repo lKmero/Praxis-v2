@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jetzt Termin bei Dr. Hadjira Bendella in Wipperfürth buchen. Psychotherapie – GKV, PKV, Beihilfe, Selbstzahler. Antwort innerhalb von 24 Stunden.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Dr. Hadjira Bendella">
+  <meta name="geo.region" content="DE-NW">
+  <meta name="geo.placename" content="Wipperfürth">
+  <meta property="og:title" content="Termin buchen – Praxis Bendella Wipperfürth">
+  <meta property="og:description" content="Jetzt Termin bei Dr. Hadjira Bendella in Wipperfürth buchen. Psychotherapie – GKV, PKV, Beihilfe, Selbstzahler. Antwort innerhalb von 24 Stunden.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:url" content="https://www.praxis-bendella.de/termin.html">
+  <meta property="og:image" content="https://www.praxis-bendella.de/assets/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Termin buchen – Praxis Bendella Wipperfürth">
+  <meta name="twitter:description" content="Jetzt Termin bei Dr. Hadjira Bendella in Wipperfürth buchen. Psychotherapie – GKV, PKV, Beihilfe, Selbstzahler. Antwort innerhalb von 24 Stunden.">
+  <meta name="twitter:image" content="https://www.praxis-bendella.de/assets/social-preview.jpg">
+  <link rel="canonical" href="https://www.praxis-bendella.de/termin.html">
+  <title>Termin buchen – Praxis Bendella Wipperfürth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Zum Hauptinhalt springen</a>
+  <!-- HEADER -->
+  <header id="header">
+    <div class="container header-inner">
+      <a href="/index.html" class="logo" aria-label="Praxis Bendella Startseite">
+        <div class="logo-mark">
+          <span class="logo-praxis">Praxis</span>
+          <span class="logo-name">Bendella</span>
+        </div>
+        <div class="logo-divider"></div>
+        <span class="logo-sub">Praxis für Psychotherapie</span>
+      </a>
+      <nav aria-label="Hauptnavigation">
+        <a href="/index.html">Start</a>
+        <a href="/ueber-mich.html">Über mich</a>
+        <a href="/leistungen.html">Leistungen</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/ratgeber/index.html">Ratgeber</a>
+        <a href="/termin.html" class="nav-book">Termin buchen</a>
+        <a href="/kontakt.html">Kontakt</a>
+      </nav>
+      <div class="header-actions">
+        <a href="/termin.html" class="btn btn-primary" style="display:none" id="header-cta">Termin buchen</a>
+        <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
+    <a href="/index.html" class="mob-link">Start</a>
+    <a href="/ueber-mich.html" class="mob-link">Über mich</a>
+    <a href="/leistungen.html" class="mob-link">Leistungen</a>
+    <a href="/faq.html" class="mob-link">FAQ</a>
+    <a href="/ratgeber/index.html" class="mob-link">Ratgeber</a>
+    <a href="/termin.html" class="mob-link">Termin buchen</a>
+    <a href="/kontakt.html" class="mob-link">Kontakt</a>
+  </nav>
+
+<main id="main">
+  <div class="page-intro">
+    <div class="container">
+      <div>
+        <p class="section-label">Terminbuchung</p>
+        <h1 class="section-title">Wählen Sie Ihren Wunschtermin – wir melden uns innerhalb von 24 Stunden zur Bestätigung.</h1>
+      </div>
+    </div>
+  </div>
+
+  <section id="termin" style="background:var(--color-bg);">
+    <div class="container">
+      <div class="booking-wrap reveal">
+        <!-- Calendar -->
+        <div class="calendar-box">
+          <div class="cal-header">
+            <span class="cal-month" id="cal-month">Juni 2026</span>
+            <div style="display:flex;gap:var(--space-2);">
+              <button class="cal-nav" id="cal-prev" aria-label="Vorheriger Monat"><i data-lucide="chevron-left" style="width:16px;height:16px;"></i></button>
+              <button class="cal-nav" id="cal-next" aria-label="Nächster Monat"><i data-lucide="chevron-right" style="width:16px;height:16px;"></i></button>
+            </div>
+          </div>
+          <div class="cal-weekdays">
+            <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
+          </div>
+          <div class="cal-days" id="cal-days"></div>
+          <div class="time-slots" id="time-slots" style="display:none;">
+            <h4>Verfügbare Zeiten</h4>
+            <div class="slots-grid" id="slots-grid"></div>
+          </div>
+        </div>
+
+        <!-- Booking Form -->
+        <div class="booking-form-box">
+          <div class="form-selection-info" id="booking-info"></div>
+          <div id="booking-success" class="success-state">
+            <div class="success-icon"><i data-lucide="check" aria-hidden="true" style="width:28px;height:28px;"></i></div>
+            <h3>Vielen Dank!</h3>
+            <p>Wir melden uns innerhalb von 24 Stunden zur Bestätigung Ihres Termins.</p>
+            <button onclick="location.reload()" class="btn btn-ghost">Zurück zur Übersicht</button>
+          </div>
+          <form id="booking-form" action="https://formspree.io/f/IHRE_FORM_ID" method="POST" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="b-first">Vorname *</label>
+                <input type="text" id="b-first" name="vorname" required autocomplete="given-name">
+                <span class="error-msg">Pflichtfeld</span>
+              </div>
+              <div class="form-group">
+                <label for="b-last">Nachname *</label>
+                <input type="text" id="b-last" name="nachname" required autocomplete="family-name">
+                <span class="error-msg">Pflichtfeld</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="b-email">E-Mail *</label>
+              <input type="email" id="b-email" name="email" required autocomplete="email">
+              <span class="error-msg">Gültige E-Mail angeben</span>
+            </div>
+            <div class="form-group">
+              <label for="b-phone">Telefon</label>
+              <input type="tel" id="b-phone" name="telefon" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="b-insurance">Versicherungsart *</label>
+              <select id="b-insurance" name="versicherung" required>
+                <option value="">Bitte wählen</option>
+                <option value="GKV">GKV – Gesetzliche Krankenversicherung</option>
+                <option value="PKV">PKV – Private Krankenversicherung</option>
+                <option value="Beihilfe">Beihilfe</option>
+                <option value="Selbstzahler">Selbstzahler</option>
+              </select>
+              <span class="error-msg">Pflichtfeld</span>
+            </div>
+            <div class="form-group">
+              <label for="b-concern">Ihr Anliegen (optional)</label>
+              <textarea id="b-concern" name="anliegen" rows="3" placeholder="Kurze Beschreibung Ihres Anliegens..."></textarea>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="b-privacy" name="datenschutz" required>
+              <label for="b-privacy">Ich stimme der <a href="/datenschutz.html">Datenschutzerklärung</a> zu. *</label>
+            </div>
+            <button type="submit" class="form-submit" id="booking-submit">Termin anfragen</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo-mark">
+            <span class="logo-praxis">Praxis</span>
+            <span class="logo-name">Bendella</span>
+          </div>
+          <p class="footer-tagline">Professionelle psychotherapeutische Begleitung in Wipperfürth.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/index.html">Startseite</a></li>
+            <li><a href="/ueber-mich.html">Über mich</a></li>
+            <li><a href="/leistungen.html">Leistungen</a></li>
+            <li><a href="/termin.html">Termin buchen</a></li>
+            <li><a href="/faq.html">FAQ</a></li>
+            <li><a href="/ratgeber/index.html">Ratgeber</a></li>
+            <li><a href="/kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <address>
+            Wupperstr. 14<br>51688 Wipperfürth<br><br>
+            <a href="tel:+492267829450">02267 829450</a><br>
+            Montag – Freitag nach Vereinbarung
+          </address>
+          <div class="crisis-footer" style="margin-top:1.5rem;">
+            <div class="crisis-footer-icon">⚠️</div>
+            <div class="crisis-footer-text">
+              <strong>Krise? Sofort-Hilfe:</strong>
+              <div class="crisis-footer-links">
+                <a href="tel:0800111 0 111">Telefonseelsorge <span>0800 111 0 111</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Praxis Bendella · Dr. Hadjira Bendella</p>
+        <div class="footer-links">
+          <a href="/impressum.html">Impressum</a>
+          <a href="/datenschutz.html">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+<script src="/main.js"></script>
+</body>
+</html>
