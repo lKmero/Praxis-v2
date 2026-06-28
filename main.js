@@ -22,7 +22,6 @@ if(hamburger&&mobileNav){
   var params=new URLSearchParams(location.search);
   var lang=params.get('lang')||'de';
   var btn=document.getElementById('lang-toggle');
-
   function apply(l){
     lang=l;
     document.documentElement.lang=l;
@@ -30,13 +29,11 @@ if(hamburger&&mobileNav){
       var val=el.getAttribute('data-'+l);
       if(val!==null)el.textContent=val;
     });
-    // Update placeholder attributes
     document.querySelectorAll('[data-de-placeholder]').forEach(function(el){
       var val=el.getAttribute('data-'+l+'-placeholder');
       if(val)el.placeholder=val;
     });
     if(btn)btn.textContent=l==='de'?'EN':'DE';
-    // Update all internal links to carry ?lang=en
     document.querySelectorAll('a[href]').forEach(function(a){
       var href=a.getAttribute('href');
       if(!href||href.startsWith('http')||href.startsWith('mailto')||href.startsWith('tel')||href.startsWith('#'))return;
@@ -45,12 +42,11 @@ if(hamburger&&mobileNav){
       a.setAttribute('href',u.pathname+(u.search||'')+(u.hash||''));
     });
   }
-
   if(btn)btn.addEventListener('click',function(){apply(lang==='de'?'en':'de');});
   apply(lang);
 })();
 
-// Termin/Kontakt tab switcher (data-tc attribute)
+// Termin/Kontakt tab switcher
 document.querySelectorAll('.tc-tab').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const target=btn.dataset.tc;
@@ -58,11 +54,11 @@ document.querySelectorAll('.tc-tab').forEach(btn=>{
     document.querySelectorAll('.tc-panel').forEach(p=>{p.style.display='none';});
     btn.classList.add('active');btn.setAttribute('aria-selected','true');
     const panel=document.getElementById('tab-panel-'+target);
-    if(panel){panel.style.display='block';}
+    if(panel)panel.style.display='block';
   });
 });
 
-// Leistungen tabs (data-tab attribute)
+// Leistungen tabs
 document.querySelectorAll('.tab-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const target=btn.dataset.tab;
@@ -83,13 +79,13 @@ document.querySelectorAll('.faq-question').forEach(btn=>{
   });
 });
 
-// Generic accordion (e.g. Berufserfahrung on ueber-mich)
+// Generic accordion (Berufserfahrung, Qualifikationen, Mitgliedschaften)
 document.querySelectorAll('.accordion-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const expanded=btn.getAttribute('aria-expanded')==='true';
     btn.setAttribute('aria-expanded',expanded?'false':'true');
     const body=btn.nextElementSibling;
-    if(body){body.classList.toggle('open',!expanded);}
+    if(body)body.classList.toggle('open',!expanded);
   });
 });
 
@@ -111,7 +107,7 @@ if(ktCbs.length&&selfBox){
   toggleSelf();
 }
 
-// Form submit with kostentraeger custom validation
+// Form submit
 document.querySelectorAll('form[data-form]').forEach(form=>{
   form.addEventListener('submit',async e=>{
     e.preventDefault();
@@ -131,29 +127,17 @@ document.querySelectorAll('form[data-form]').forEach(form=>{
     });
     if(!valid)return;
     const btn=form.querySelector('.form-submit');
-    const origText=btn.textContent;
     btn.disabled=true;btn.textContent='Wird gesendet\u2026';
     try{
       const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
       if(res.ok){
         form.style.display='none';
-        const formType=form.dataset.form;
-        const ss=document.getElementById('success-'+formType);
+        const ss=document.getElementById('success-'+form.dataset.form);
         if(ss)ss.classList.add('visible');
       }else{btn.disabled=false;btn.textContent='Erneut versuchen';}
     }catch(err){btn.disabled=false;btn.textContent='Erneut versuchen';}
   });
 });
-
-// Header CTA scroll-in
-(function(){
-  const cta=document.getElementById('header-cta');
-  if(!cta)return;
-  const hero=document.getElementById('hero');
-  if(!hero){cta.style.display='';return;}
-  const io=new IntersectionObserver(([e])=>{cta.style.display=e.isIntersecting?'none':'';},{threshold:0});
-  io.observe(hero);
-})();
 
 // Init Lucide icons
 if(typeof lucide!=='undefined')lucide.createIcons();

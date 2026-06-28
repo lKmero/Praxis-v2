@@ -350,11 +350,76 @@ footer address a{color:var(--color-primary)}
 }
 .price-note--success strong { color: var(--color-success); }
 
-/* ─── Accordion ─── */
-.accordion-btn .acc-chevron { transition: transform .3s ease; }
-.accordion-btn[aria-expanded="true"] .acc-chevron { transform: rotate(180deg); }
-.accordion-body { overflow: hidden; max-height: 0; transition: max-height .45s ease; }
-.accordion-body.open { max-height: 2000px; }
 /* Clean up button label spacing inside accordion-btn */
 .accordion-btn .section-label,
 .accordion-btn .section-title { margin-bottom: 0; }
+
+/* ─── Accordion ─── */
+.acc-block {
+  border-bottom: 1px solid var(--color-border);
+}
+.acc-block:first-child {
+  border-top: 1px solid var(--color-border);
+}
+.accordion-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-5) 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: var(--space-4);
+}
+.accordion-btn:hover .acc-title { color: var(--color-primary); }
+.acc-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--color-text);
+  transition: color var(--transition-interactive);
+}
+.acc-chevron {
+  color: var(--color-primary);
+  transition: transform .3s ease;
+  flex-shrink: 0;
+}
+.accordion-btn[aria-expanded="true"] .acc-chevron {
+  transform: rotate(180deg);
+}
+.accordion-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .4s ease, padding .3s ease;
+  padding-bottom: 0;
+}
+.accordion-body.open {
+  max-height: 2000px;
+  padding-bottom: var(--space-6);
+}
+.acc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-2);
+}
+.acc-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+.acc-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
