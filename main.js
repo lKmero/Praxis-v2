@@ -17,6 +17,39 @@ if(hamburger&&mobileNav){
   }));
 }
 
+// Language toggle — persisted via URL param ?lang=en
+(function(){
+  var params=new URLSearchParams(location.search);
+  var lang=params.get('lang')||'de';
+  var btn=document.getElementById('lang-toggle');
+
+  function apply(l){
+    lang=l;
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-de]').forEach(function(el){
+      var val=el.getAttribute('data-'+l);
+      if(val!==null)el.textContent=val;
+    });
+    // Update placeholder attributes
+    document.querySelectorAll('[data-de-placeholder]').forEach(function(el){
+      var val=el.getAttribute('data-'+l+'-placeholder');
+      if(val)el.placeholder=val;
+    });
+    if(btn)btn.textContent=l==='de'?'EN':'DE';
+    // Update all internal links to carry ?lang=en
+    document.querySelectorAll('a[href]').forEach(function(a){
+      var href=a.getAttribute('href');
+      if(!href||href.startsWith('http')||href.startsWith('mailto')||href.startsWith('tel')||href.startsWith('#'))return;
+      var u=new URL(href,location.href);
+      if(l==='en'){u.searchParams.set('lang','en');}else{u.searchParams.delete('lang');}
+      a.setAttribute('href',u.pathname+(u.search||'')+(u.hash||''));
+    });
+  }
+
+  if(btn)btn.addEventListener('click',function(){apply(lang==='de'?'en':'de');});
+  apply(lang);
+})();
+
 // Termin/Kontakt tab switcher (data-tc attribute)
 document.querySelectorAll('.tc-tab').forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -50,12 +83,13 @@ document.querySelectorAll('.faq-question').forEach(btn=>{
   });
 });
 
-// Generic accordion
+// Generic accordion (e.g. Berufserfahrung on ueber-mich)
 document.querySelectorAll('.accordion-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const expanded=btn.getAttribute('aria-expanded')==='true';
     btn.setAttribute('aria-expanded',expanded?'false':'true');
-    btn.nextElementSibling.classList.toggle('open',!expanded);
+    const body=btn.nextElementSibling;
+    if(body){body.classList.toggle('open',!expanded);}
   });
 });
 
@@ -82,8 +116,6 @@ document.querySelectorAll('form[data-form]').forEach(form=>{
   form.addEventListener('submit',async e=>{
     e.preventDefault();
     let valid=true;
-
-    // Custom: at least one Kostentraeger checkbox
     const ktGroup=form.querySelector('#kt-group');
     const ktError=form.querySelector('#kt-error');
     if(ktGroup){
@@ -91,26 +123,22 @@ document.querySelectorAll('form[data-form]').forEach(form=>{
       if(!anyKt){if(ktError)ktError.style.display='block';valid=false;}
       else{if(ktError)ktError.style.display='none';}
     }
-
-    // Standard required fields
     form.querySelectorAll('[required]').forEach(field=>{
       const g=field.closest('.form-group');
       const isEmpty=field.type==='checkbox'?!field.checked:!field.value.trim();
       if(isEmpty){if(g)g.classList.add('has-error');valid=false;}
       else{if(g)g.classList.remove('has-error');}
     });
-
     if(!valid)return;
     const btn=form.querySelector('.form-submit');
     const origText=btn.textContent;
-    btn.disabled=true;btn.textContent='Wird gesendet…';
+    btn.disabled=true;btn.textContent='Wird gesendet\u2026';
     try{
       const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
       if(res.ok){
         form.style.display='none';
-        const box=form.closest('.kontakt-form');
         const formType=form.dataset.form;
-        const ss=document.getElementById('success-'+formType)||box&&box.querySelector('.success-state');
+        const ss=document.getElementById('success-'+formType);
         if(ss)ss.classList.add('visible');
       }else{btn.disabled=false;btn.textContent='Erneut versuchen';}
     }catch(err){btn.disabled=false;btn.textContent='Erneut versuchen';}
@@ -125,21 +153,6 @@ document.querySelectorAll('form[data-form]').forEach(form=>{
   if(!hero){cta.style.display='';return;}
   const io=new IntersectionObserver(([e])=>{cta.style.display=e.isIntersecting?'none':'';},{threshold:0});
   io.observe(hero);
-})();
-
-// Language toggle
-(function(){
-  var lang='de';
-  var btn=document.getElementById('lang-toggle');
-  function apply(l){
-    lang=l;document.documentElement.lang=l;
-    document.querySelectorAll('[data-de]').forEach(function(el){
-      var val=el.getAttribute('data-'+l);
-      if(val!==null)el.textContent=val;
-    });
-    if(btn)btn.textContent=l==='de'?'EN':'DE';
-  }
-  if(btn)btn.addEventListener('click',function(){apply(lang==='de'?'en':'de');});
 })();
 
 // Init Lucide icons

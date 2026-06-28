@@ -328,3 +328,33 @@ footer address a{color:var(--color-primary)}
   .tc-kontakt-layout{grid-template-columns:1fr}
   .tc-kontakt-info{position:static}
 }
+
+
+/* ─── Hero left-aligned (centered container, left text) ─── */
+.hero-left .hero-text { text-align: left; align-items: flex-start; }
+.hero-left .hero-subtitle { text-align: left; margin-inline: 0; }
+.hero-left .hero-ctas { justify-content: flex-start; }
+.hero-left .hero-trust { justify-content: flex-start; }
+
+/* ─── Price-note variants ─── */
+.price-note--warning {
+  background: oklch(from var(--color-warning) l c h / 0.08);
+  border-color: oklch(from var(--color-warning) l c h / 0.25);
+  color: var(--color-warning);
+}
+.price-note--warning strong { color: var(--color-warning); }
+.price-note--success {
+  background: oklch(from var(--color-success) l c h / 0.08);
+  border-color: oklch(from var(--color-success) l c h / 0.25);
+  color: var(--color-success);
+}
+.price-note--success strong { color: var(--color-success); }
+
+/* ─── Accordion ─── */
+.accordion-btn .acc-chevron { transition: transform .3s ease; }
+.accordion-btn[aria-expanded="true"] .acc-chevron { transform: rotate(180deg); }
+.accordion-body { overflow: hidden; max-height: 0; transition: max-height .45s ease; }
+.accordion-body.open { max-height: 2000px; }
+/* Clean up button label spacing inside accordion-btn */
+.accordion-btn .section-label,
+.accordion-btn .section-title { margin-bottom: 0; }

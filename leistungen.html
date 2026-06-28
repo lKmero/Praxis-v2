@@ -21,23 +21,24 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a href="#main" class="skip-link">Zum Hauptinhalt springen</a><header id="header">
+
+<a href="#main" class="skip-link" data-de="Zum Hauptinhalt springen" data-en="Skip to main content">Zum Hauptinhalt springen</a>
+<header id="header">
   <div class="container header-inner">
     <a href="index.html" class="logo" aria-label="Praxis Bendella Startseite">
       <div class="logo-mark"><span class="logo-praxis">Praxis</span><span class="logo-name">Bendella</span></div>
       <div class="logo-divider"></div>
-      <span class="logo-sub">Praxis für Psychotherapie</span>
+      <span class="logo-sub" data-de="Praxis für Psychotherapie" data-en="Practice for Psychotherapy">Praxis für Psychotherapie</span>
     </a>
-    <nav aria-label="Hauptnavigation"><a href="index.html">Start</a>
-<a href="ueber-mich.html">Über mich</a>
-<a href="leistungen.html" style='color:var(--color-primary);font-weight:600'>Leistungen</a>
-<a href="faq.html">FAQ</a>
-<a href="ratgeber/index.html">Ratgeber</a>
-<a href="termin.html" class="nav-book">Termin anfragen</a>
-<a href="kontakt.html">Kontakt</a>
-</nav>
+    <nav aria-label="Hauptnavigation">
+      <a href="index.html"   data-de="Start" data-en="Home">Start</a>
+      <a href="ueber-mich.html"   data-de="Über mich" data-en="About me">Über mich</a>
+      <a href="leistungen.html"  style="color:var(--color-primary);font-weight:600" data-de="Leistungen" data-en="Services">Leistungen</a>
+      <a href="termin.html" class="nav-book"  data-de="Termin &amp; Kontakt" data-en="Appointment &amp; Contact">Termin &amp; Kontakt</a>
+    </nav>
     <div class="header-actions">
-      <a href="termin.html" class="btn btn-primary" style="display:none" id="header-cta">Termin anfragen</a>
+      <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">EN</button>
+      <a href="termin.html" class="btn btn-primary" id="header-cta" style="display:none" data-de="Termin anfragen" data-en="Book appointment">Termin anfragen</a>
       <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -45,13 +46,10 @@
   </div>
 </header>
 <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
-<a href="index.html" class="mob-link">Start</a>
-<a href="ueber-mich.html" class="mob-link">Über mich</a>
-<a href="leistungen.html" class="mob-link">Leistungen</a>
-<a href="faq.html" class="mob-link">FAQ</a>
-<a href="ratgeber/index.html" class="mob-link">Ratgeber</a>
-<a href="termin.html" class="mob-link">Termin anfragen</a>
-<a href="kontakt.html" class="mob-link">Kontakt</a>
+  <a href="index.html" class="mob-link" data-de="Start" data-en="Home">Start</a>
+  <a href="ueber-mich.html" class="mob-link" data-de="Über mich" data-en="About me">Über mich</a>
+  <a href="leistungen.html" class="mob-link" data-de="Leistungen" data-en="Services">Leistungen</a>
+  <a href="termin.html" class="mob-link" data-de="Termin &amp; Kontakt" data-en="Appointment &amp; Contact">Termin &amp; Kontakt</a>
 </nav>
 <main id="main">
 <div class="page-intro"><div class="container"><div><p class="section-label">Angebot</p><h1 class="section-title">Leistungen &amp; Kosten</h1></div><p>Ich begleite Sie individuell – ob über die Krankenkasse, privat oder als Selbstzahlerin.</p></div></div>
@@ -77,8 +75,12 @@
           <li>Langzeittherapie (bis 60 Sitzungen und mehr)</li>
           <li>Einzeltherapie</li>
           <li>Option: überwiegend Onlinetermine (wenn therapeutisch sinnvoll)</li>
+          <li>Kombinationsbehandlung aus Gruppen- und Einzeltherapie</li>
         </ul>
-        <div class="price-note"><i data-lucide="info" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-right:4px"></i>Keine Überweisung für das Erstgespräch notwendig.</div>
+        <div class="price-note price-note--warning">
+          <i data-lucide="clock" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-right:6px"></i>
+          <strong>Aktuell sind alle Therapieplätze vergeben.</strong> Wartezeiten betragen derzeit mindestens mehrere Monate.
+        </div>
       </div>
     </div>
     <div class="tab-panel" id="tab-pkv">
@@ -91,6 +93,10 @@
           <li>Flexible Therapiefrequenz nach Vereinbarung</li>
         </ul>
         <div class="price-note">Bitte klären Sie vorab mit Ihrer Versicherung, in welchem Umfang Leistungen erstattet werden.</div>
+        <div class="price-note price-note--success" style="margin-top:var(--space-3)">
+          <i data-lucide="check-circle" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-right:6px"></i>
+          <strong>Freie Therapieplätze vorhanden.</strong> Kurzfristige Termine sind aktuell möglich.
+        </div>
       </div>
     </div>
     <div class="tab-panel" id="tab-selbst">
@@ -99,10 +105,13 @@
         <p>Ohne Kostenübernahme durch eine Krankenkasse – schnell, flexibel und ohne Wartezeit auf Genehmigung.</p>
         <ul>
           <li>Einzeltherapie</li>
-          <li>Reine Online-Therapie</li>
-          <li>Beratungsgespräche &amp; Coaching</li>
+          <li>Reine Online-Therapie (auf Wunsch)</li>
+          <li>Abrechnung nach GOP/GOÄ</li>
         </ul>
-        <div class="price-note"><i data-lucide="info" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-right:4px"></i>Kosten richten sich nach der GOP. Gerne besprechen wir die Konditionen im Vorgespräch.</div>
+        <div class="price-note price-note--success">
+          <i data-lucide="check-circle" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-right:6px"></i>
+          <strong>Kurzfristige Termine möglich.</strong> Gerne besprechen wir die Konditionen im Vorgespräch.
+        </div>
       </div>
     </div>
     <div class="tab-panel" id="tab-paar">
@@ -140,10 +149,15 @@
     <h2 class="section-title reveal">Womit ich Ihnen helfen kann</h2>
     <div class="pills-wrap reveal">
       <span class="pill">Traumafolgestörungen</span><span class="pill">Depressionen</span>
-      <span class="pill">Angststörungen</span><span class="pill">Burnout</span>
-      <span class="pill">Erschöpfungssyndrome</span><span class="pill">Persönlichkeitsstörungen</span>
-      <span class="pill">Essstörungen</span><span class="pill">Zwangsstörungen</span>
-      <span class="pill">Somatisierungsstörungen</span><span class="pill">ADHS</span>
+      <span class="pill">Ängste</span><span class="pill">Panikattacken</span>
+      <span class="pill">Phobien</span><span class="pill">Lebenskrisen</span>
+      <span class="pill">Perfektionismus</span><span class="pill">Burnout</span>
+      <span class="pill">Erschöpfung</span><span class="pill">Persönlichkeitsstörungen</span>
+      <span class="pill">soziale Schwierigkeiten</span><span class="pill">Einsamkeit</span>
+      <span class="pill">Essstörungen</span><span class="pill">Zwänge</span>
+      <span class="pill">Somatisierungsstörungen</span><span class="pill">chronische Schmerzen</span>
+      <span class="pill">ADHS</span><span class="pill">Prokrastination</span>
+      <span class="pill">Beziehungsprobleme</span><span class="pill">Verlustängste</span>
     </div>
   </div>
 </section>
@@ -163,11 +177,11 @@
       </div>
       <div class="verfahren-card reveal reveal-delay-2">
         <div class="verfahren-icon"><i data-lucide="eye" style="width:18px;height:18px"></i></div>
-        <div><h4>EMDR</h4><p>Eye Movement Desensitization and Reprocessing – bewährte Methode zur Verarbeitung traumatischer Erfahrungen.</p></div>
+        <div><h4>EMDR</h4><p>Eye Movement Desensitization and Reprocessing – bewährte Methode zur Verarbeitung belastender Erfahrungen.</p></div>
       </div>
       <div class="verfahren-card reveal">
         <div class="verfahren-icon"><i data-lucide="wind" style="width:18px;height:18px"></i></div>
-        <div><h4>Entspannungsverfahren</h4><p>Progressive Muskelentspannung, Achtsamkeitsübungen und weitere Techniken zur Stressbewältigung.</p></div>
+        <div><h4>Entspannungsverfahren</h4><p>Progressive Muskelentspannung, Autogenes Training, Achtsamkeitsübungen und weitere Techniken zur Stressbewältigung.</p></div>
       </div>
       <div class="verfahren-card reveal reveal-delay-1">
         <div class="verfahren-icon"><i data-lucide="moon" style="width:18px;height:18px"></i></div>

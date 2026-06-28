@@ -20,7 +20,8 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a href="#main" class="skip-link">Zum Hauptinhalt springen</a>
+
+<a href="#main" class="skip-link" data-de="Zum Hauptinhalt springen" data-en="Skip to main content">Zum Hauptinhalt springen</a>
 <header id="header">
   <div class="container header-inner">
     <a href="index.html" class="logo" aria-label="Praxis Bendella Startseite">
@@ -29,14 +30,14 @@
       <span class="logo-sub" data-de="Praxis für Psychotherapie" data-en="Practice for Psychotherapy">Praxis für Psychotherapie</span>
     </a>
     <nav aria-label="Hauptnavigation">
-      <a href="index.html" data-de="Start" data-en="Home">Start</a>
-      <a href="ueber-mich.html" style="color:var(--color-primary);font-weight:600" data-de="Über mich" data-en="About me">Über mich</a>
-      <a href="leistungen.html" data-de="Leistungen" data-en="Services">Leistungen</a>
-      <a href="termin.html" class="nav-book" data-de="Termin &amp; Kontakt" data-en="Appointment &amp; Contact">Termin &amp; Kontakt</a>
+      <a href="index.html"   data-de="Start" data-en="Home">Start</a>
+      <a href="ueber-mich.html"  style="color:var(--color-primary);font-weight:600" data-de="Über mich" data-en="About me">Über mich</a>
+      <a href="leistungen.html"   data-de="Leistungen" data-en="Services">Leistungen</a>
+      <a href="termin.html" class="nav-book"  data-de="Termin &amp; Kontakt" data-en="Appointment &amp; Contact">Termin &amp; Kontakt</a>
     </nav>
     <div class="header-actions">
       <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">EN</button>
-      <a href="termin.html" class="btn btn-primary" style="display:none" id="header-cta" data-de="Termin anfragen" data-en="Book appointment">Termin anfragen</a>
+      <a href="termin.html" class="btn btn-primary" id="header-cta" style="display:none" data-de="Termin anfragen" data-en="Book appointment">Termin anfragen</a>
       <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -86,9 +87,15 @@
 
 <section style="background:var(--color-bg)">
   <div class="container">
-    <p class="section-label reveal" data-de="Werdegang" data-en="Career">Werdegang</p>
-    <h2 class="section-title reveal" data-de="Stationen &amp; Erfahrungen" data-en="Positions &amp; Experience">Stationen &amp; Erfahrungen</h2>
-    <div class="timeline reveal" style="margin-top:var(--space-8)">
+    <button class="accordion-btn" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:var(--space-5) 0;border-bottom:1px solid var(--color-border);background:none;border-top:none;border-left:none;border-right:none;cursor:pointer;text-align:left">
+      <span>
+        <p class="section-label reveal" data-de="Werdegang" data-en="Career">Werdegang</p>
+        <h2 class="section-title reveal" data-de="Stationen &amp; Erfahrungen" data-en="Positions &amp; Experience">Stationen &amp; Erfahrungen</h2>
+      </span>
+      <i data-lucide="chevron-down" style="width:20px;height:20px;color:var(--color-primary);transition:transform .3s;flex-shrink:0" class="acc-chevron"></i>
+    </button>
+    <div class="accordion-body" style="overflow:hidden;max-height:0;transition:max-height .4s ease">
+      <div class="timeline reveal" style="margin-top:var(--space-8)">
       <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">
         <p class="timeline-date" data-de="Ab Oktober 2025" data-en="From October 2025">Ab Oktober 2025</p>
         <h4 data-de="Eigene Praxis in Wipperfürth" data-en="Own practice in Wipperfürth">Eigene Praxis in Wipperfürth</h4>
@@ -118,6 +125,7 @@
         <h4 data-de="Wissenschaftliche Mitarbeiterin, Universität zu Köln (Organisations- und Wirtschaftspsychologie)" data-en="Research associate, University of Cologne (Organisational and Business Psychology)">Wissenschaftliche Mitarbeiterin, Universität zu Köln</h4>
       </div></div>
     </div>
+    </div>
   </div>
 </section>
 
@@ -136,15 +144,7 @@
   </div>
 </section>
 
-<section style="background:var(--color-bg)">
-  <div class="container" style="text-align:center;max-width:600px">
-    <h2 class="section-title reveal" data-de="Lassen Sie uns sprechen" data-en="Let's talk">Lassen Sie uns sprechen</h2>
-    <p class="section-subtitle reveal" style="margin:0 auto var(--space-8)">Ich freue mich auf ein erstes Gespräch mit Ihnen.</p>
-    <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap" class="reveal">
-      <a href="termin.html" class="btn btn-primary" data-de="Termin anfragen" data-en="Request appointment">Termin anfragen</a>
-    </div>
-  </div>
-</section>
+
 </main>
 <footer>
   <div class="container">

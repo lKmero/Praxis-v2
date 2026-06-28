@@ -21,23 +21,24 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a href="#main" class="skip-link">Zum Hauptinhalt springen</a><header id="header">
+
+<a href="#main" class="skip-link" data-de="Zum Hauptinhalt springen" data-en="Skip to main content">Zum Hauptinhalt springen</a>
+<header id="header">
   <div class="container header-inner">
     <a href="index.html" class="logo" aria-label="Praxis Bendella Startseite">
       <div class="logo-mark"><span class="logo-praxis">Praxis</span><span class="logo-name">Bendella</span></div>
       <div class="logo-divider"></div>
-      <span class="logo-sub">Praxis für Psychotherapie</span>
+      <span class="logo-sub" data-de="Praxis für Psychotherapie" data-en="Practice for Psychotherapy">Praxis für Psychotherapie</span>
     </a>
-    <nav aria-label="Hauptnavigation"><a href="index.html">Start</a>
-<a href="ueber-mich.html">Über mich</a>
-<a href="leistungen.html">Leistungen</a>
-<a href="faq.html" style='color:var(--color-primary);font-weight:600'>FAQ</a>
-<a href="ratgeber/index.html">Ratgeber</a>
-<a href="termin.html" class="nav-book">Termin anfragen</a>
-<a href="kontakt.html">Kontakt</a>
-</nav>
+    <nav aria-label="Hauptnavigation">
+      <a href="index.html"   data-de="Start" data-en="Home">Start</a>
+      <a href="ueber-mich.html"   data-de="Über mich" data-en="About me">Über mich</a>
+      <a href="leistungen.html"   data-de="Leistungen" data-en="Services">Leistungen</a>
+      <a href="termin.html" class="nav-book"  data-de="Termin &amp; Kontakt" data-en="Appointment &amp; Contact">Termin &amp; Kontakt</a>
+    </nav>
     <div class="header-actions">
-      <a href="termin.html" class="btn btn-primary" style="display:none" id="header-cta">Termin anfragen</a>
+      <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">EN</button>
+      <a href="termin.html" class="btn btn-primary" id="header-cta" style="display:none" data-de="Termin anfragen" data-en="Book appointment">Termin anfragen</a>
       <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -45,13 +46,10 @@
   </div>
 </header>
 <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
-<a href="index.html" class="mob-link">Start</a>
-<a href="ueber-mich.html" class="mob-link">Über mich</a>
-<a href="leistungen.html" class="mob-link">Leistungen</a>
-<a href="faq.html" class="mob-link">FAQ</a>
-<a href="ratgeber/index.html" class="mob-link">Ratgeber</a>
-<a href="termin.html" class="mob-link">Termin anfragen</a>
-<a href="kontakt.html" class="mob-link">Kontakt</a>
+  <a href="index.html" class="mob-link" data-de="Start" data-en="Home">Start</a>
+  <a href="ueber-mich.html" class="mob-link" data-de="Über mich" data-en="About me">Über mich</a>
+  <a href="leistungen.html" class="mob-link" data-de="Leistungen" data-en="Services">Leistungen</a>
+  <a href="termin.html" class="mob-link" data-de="Termin &amp; Kontakt" data-en="Appointment &amp; Contact">Termin &amp; Kontakt</a>
 </nav>
 <main id="main">
 <div class="page-intro"><div class="container"><div><p class="section-label">Antworten</p><h1 class="section-title">Häufige Fragen</h1></div><p>Sie haben Fragen? Hier finden Sie Antworten auf die häufigsten.</p></div></div>
