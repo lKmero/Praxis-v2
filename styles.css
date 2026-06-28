@@ -264,3 +264,67 @@ footer{background:var(--color-surface-3);border-top:1px solid var(--color-divide
 /* Language toggle */
 .lang-toggle{display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;border-radius:var(--radius-full);border:1.5px solid var(--color-border);font-size:var(--text-xs);font-weight:600;letter-spacing:.04em;color:var(--color-text-muted);background:none;cursor:pointer;transition:all var(--transition);margin-right:var(--space-2);}
 .lang-toggle:hover{background:var(--color-surface-2);border-color:var(--color-primary);color:var(--color-primary);}
+
+
+/* ─── Hero centered (kein Bild) ─── */
+.hero-centered{display:flex;justify-content:center}
+.hero-centered .hero-text{max-width:760px;text-align:center;align-items:center}
+.hero-centered .hero-subtitle{text-align:center;margin-inline:auto}
+.hero-centered .hero-ctas{justify-content:center}
+.hero-centered .hero-trust{justify-content:center}
+
+/* ─── Termin + Kontakt Tabs ─── */
+.tc-tabs{display:flex;gap:var(--space-2);background:var(--color-surface);border-radius:var(--radius-xl);padding:var(--space-2);width:fit-content;box-shadow:var(--shadow-sm);border:1px solid var(--color-border);margin-bottom:var(--space-10)}
+.tc-tab{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-6);border-radius:var(--radius-lg);font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);transition:all var(--transition);cursor:pointer;min-height:44px}
+.tc-tab svg{color:var(--color-text-muted);transition:color var(--transition)}
+.tc-tab:hover{background:var(--color-surface-2);color:var(--color-text)}
+.tc-tab.active{background:var(--color-primary);color:#fff;box-shadow:var(--shadow-sm)}
+.tc-tab.active svg{color:#fff}
+.tc-panel{animation:tcFadeIn .25s ease}
+@keyframes tcFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ─── Kontakt split layout ─── */
+.tc-kontakt-layout{display:grid;grid-template-columns:300px 1fr;gap:var(--space-10);align-items:start}
+.tc-kontakt-info{background:var(--color-surface);border-radius:var(--radius-xl);padding:var(--space-8);box-shadow:var(--shadow-sm);border:1px solid var(--color-border);position:sticky;top:calc(80px + var(--space-6))}
+.tc-kontakt-info h3{font-family:var(--font-display);font-size:var(--text-lg);font-weight:500;color:var(--color-text)}
+.kontakt-item{display:flex;gap:var(--space-4);align-items:flex-start}
+.kontakt-item-icon{width:40px;height:40px;border-radius:var(--radius-md);background:var(--color-primary-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.kontakt-item-icon svg{color:var(--color-primary)}
+.kontakt-item h4{font-family:var(--font-body);font-size:var(--text-sm);font-weight:600;color:var(--color-text)}
+
+/* ─── Footer nav links ─── */
+.footer-col h4{font-size:var(--text-sm);font-weight:600;margin-bottom:var(--space-4)}
+.footer-col ul{display:flex;flex-direction:column;gap:var(--space-2)}
+.footer-col ul a{font-size:var(--text-xs);color:var(--color-text-muted)}
+.footer-col ul a:hover{color:var(--color-primary)}
+footer address{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.8;font-style:normal}
+footer address a{color:var(--color-primary)}
+
+/* ─── Kostenträger validation error ─── */
+#kt-error{color:var(--color-error);font-size:var(--text-xs)}
+
+/* ─── FAQ CTA box ─── */
+.faq-cta-box{display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);background:var(--color-primary-light);border-radius:var(--radius-xl);padding:var(--space-8);flex-wrap:wrap}
+.faq-cta-box h3{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-text)}
+.faq-cta-box p{font-size:var(--text-sm);color:var(--color-text-muted)}
+
+/* ─── Timeline ─── */
+.timeline{display:flex;flex-direction:column;border-left:2px solid var(--color-primary-light);padding-left:var(--space-8);margin-left:var(--space-4)}
+.timeline-item{position:relative;padding-bottom:var(--space-8)}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-dot{position:absolute;left:calc(-1 * var(--space-8) - 5px);top:6px;width:10px;height:10px;border-radius:50%;background:var(--color-primary);border:2px solid var(--color-bg)}
+.timeline-date{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--color-primary);font-weight:500;margin-bottom:var(--space-1)}
+.timeline-content h4{font-family:var(--font-body);font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.5}
+
+/* ─── Leistungen checklist ─── */
+.leistungen-list{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-4)}
+.leistungen-list li{display:flex;align-items:flex-start;gap:var(--space-3);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6}
+.leistungen-list li svg{color:var(--color-primary);flex-shrink:0;margin-top:3px}
+
+/* ─── Mobile responsive ─── */
+@media(max-width:768px){
+  .tc-tabs{width:100%;flex-direction:column}
+  .tc-tab{justify-content:center}
+  .tc-kontakt-layout{grid-template-columns:1fr}
+  .tc-kontakt-info{position:static}
+}

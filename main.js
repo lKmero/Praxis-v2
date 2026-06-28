@@ -1,9 +1,8 @@
-
 // Header scroll
 const header=document.getElementById('header');
 if(header)window.addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>30),{passive:true});
 
-// Hamburger
+// Hamburger / mobile nav
 const hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('mobile-nav');
 if(hamburger&&mobileNav){
   hamburger.addEventListener('click',()=>{
@@ -17,6 +16,30 @@ if(hamburger&&mobileNav){
     hamburger.setAttribute('aria-expanded','false');document.body.style.overflow='';
   }));
 }
+
+// Termin/Kontakt tab switcher (data-tc attribute)
+document.querySelectorAll('.tc-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const target=btn.dataset.tc;
+    document.querySelectorAll('.tc-tab').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+    document.querySelectorAll('.tc-panel').forEach(p=>{p.style.display='none';});
+    btn.classList.add('active');btn.setAttribute('aria-selected','true');
+    const panel=document.getElementById('tab-panel-'+target);
+    if(panel){panel.style.display='block';}
+  });
+});
+
+// Leistungen tabs (data-tab attribute)
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const target=btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    const panel=document.getElementById('tab-'+target);
+    if(panel)panel.classList.add('active');
+  });
+});
 
 // FAQ accordion
 document.querySelectorAll('.faq-question').forEach(btn=>{
@@ -33,18 +56,6 @@ document.querySelectorAll('.accordion-btn').forEach(btn=>{
     const expanded=btn.getAttribute('aria-expanded')==='true';
     btn.setAttribute('aria-expanded',expanded?'false':'true');
     btn.nextElementSibling.classList.toggle('open',!expanded);
-  });
-});
-
-// Leistungen Tabs
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const target=btn.dataset.tab;
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    const panel=document.getElementById('tab-'+target);
-    if(panel)panel.classList.add('active');
   });
 });
 
@@ -66,34 +77,55 @@ if(ktCbs.length&&selfBox){
   toggleSelf();
 }
 
-// Form submit (Formspree)
+// Form submit with kostentraeger custom validation
 document.querySelectorAll('form[data-form]').forEach(form=>{
   form.addEventListener('submit',async e=>{
     e.preventDefault();
     let valid=true;
+
+    // Custom: at least one Kostentraeger checkbox
+    const ktGroup=form.querySelector('#kt-group');
+    const ktError=form.querySelector('#kt-error');
+    if(ktGroup){
+      const anyKt=[...ktGroup.querySelectorAll('input[type=checkbox]')].some(c=>c.checked);
+      if(!anyKt){if(ktError)ktError.style.display='block';valid=false;}
+      else{if(ktError)ktError.style.display='none';}
+    }
+
+    // Standard required fields
     form.querySelectorAll('[required]').forEach(field=>{
       const g=field.closest('.form-group');
-      if(!field.value.trim()&&field.type!=='checkbox'){if(g)g.classList.add('has-error');valid=false;}
-      else if(field.type==='checkbox'&&!field.checked){if(g)g.classList.add('has-error');valid=false;}
+      const isEmpty=field.type==='checkbox'?!field.checked:!field.value.trim();
+      if(isEmpty){if(g)g.classList.add('has-error');valid=false;}
       else{if(g)g.classList.remove('has-error');}
     });
+
     if(!valid)return;
     const btn=form.querySelector('.form-submit');
+    const origText=btn.textContent;
     btn.disabled=true;btn.textContent='Wird gesendet…';
     try{
       const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
       if(res.ok){
         form.style.display='none';
-        const box=form.closest('.booking-form-box')||form.closest('.kontakt-form');
-        const ss=box&&box.querySelector('.success-state');
+        const box=form.closest('.kontakt-form');
+        const formType=form.dataset.form;
+        const ss=document.getElementById('success-'+formType)||box&&box.querySelector('.success-state');
         if(ss)ss.classList.add('visible');
       }else{btn.disabled=false;btn.textContent='Erneut versuchen';}
     }catch(err){btn.disabled=false;btn.textContent='Erneut versuchen';}
   });
 });
 
-// Init Lucide icons - called after all DOM is ready
-if(typeof lucide!=='undefined') lucide.createIcons();
+// Header CTA scroll-in
+(function(){
+  const cta=document.getElementById('header-cta');
+  if(!cta)return;
+  const hero=document.getElementById('hero');
+  if(!hero){cta.style.display='';return;}
+  const io=new IntersectionObserver(([e])=>{cta.style.display=e.isIntersecting?'none':'';},{threshold:0});
+  io.observe(hero);
+})();
 
 // Language toggle
 (function(){
@@ -101,8 +133,14 @@ if(typeof lucide!=='undefined') lucide.createIcons();
   var btn=document.getElementById('lang-toggle');
   function apply(l){
     lang=l;document.documentElement.lang=l;
-    document.querySelectorAll('[data-de][data-en]').forEach(function(el){el.textContent=el.getAttribute('data-'+l);});
+    document.querySelectorAll('[data-de]').forEach(function(el){
+      var val=el.getAttribute('data-'+l);
+      if(val!==null)el.textContent=val;
+    });
     if(btn)btn.textContent=l==='de'?'EN':'DE';
   }
   if(btn)btn.addEventListener('click',function(){apply(lang==='de'?'en':'de');});
 })();
+
+// Init Lucide icons
+if(typeof lucide!=='undefined')lucide.createIcons();
