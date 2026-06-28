@@ -60,7 +60,7 @@
       <strong style="color:var(--color-text)">Praxis Bendella</strong><br>
       Dr. Hadjira Bendella<br>Wupperstr. 14<br>51688 Wipperfürth<br><br>
       Tel.: <a href="tel:+492267829450" style="color:var(--color-primary)">02267 829450</a><br>
-      E-Mail: <a href="mailto:kontakt@praxis-bendella.de" style="color:var(--color-primary)">kontakt@praxis-bendella.de</a>
+      E-Mail: <span class="obf-email"></span>
     </address></div>
     <div><h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;margin-bottom:var(--space-4)">Berufsbezeichnung</h2>
     <p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.8">Psychologische Psychotherapeutin (verliehen in der Bundesrepublik Deutschland)<br>Maßgebliche berufsrechtliche Regelungen: Berufsordnung der PTK NRW · <a href="https://www.ptk-nrw.de" target="_blank" rel="noopener" style="color:var(--color-primary)">www.ptk-nrw.de</a></p></div>
@@ -108,5 +108,17 @@
   </div>
 </footer>
 <script src="main.js"></script>
+<script>
+(function(){
+  var u='kontakt',d='praxis-bendella.de';
+  document.querySelectorAll('.obf-email').forEach(function(el){
+    var a=document.createElement('a');
+    a.href='mailto:'+u+'@'+d;
+    a.textContent=u+'@'+d;
+    a.style.color='var(--color-primary)';
+    el.appendChild(a);
+  });
+})();
+</script>
 </body>
 </html>

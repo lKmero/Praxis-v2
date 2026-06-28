@@ -55,10 +55,10 @@
 <div class="page-intro"><div class="container"><div><p class="section-label">Rechtliches</p><h1 class="section-title">Datenschutzerklärung</h1></div></div></div>
 <section style="background:var(--color-bg)">
   <div class="container" style="max-width:720px;display:flex;flex-direction:column;gap:var(--space-8)">
-    <div><h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;margin-bottom:var(--space-4)">1. Verantwortliche Stelle</h2><p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.8">Praxis Bendella · Dr. Hadjira Bendella · Wupperstr. 14 · 51688 Wipperfürth · <a href="mailto:kontakt@praxis-bendella.de" style="color:var(--color-primary)">kontakt@praxis-bendella.de</a></p></div>
+    <div><h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;margin-bottom:var(--space-4)">1. Verantwortliche Stelle</h2><p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.8">Praxis Bendella · Dr. Hadjira Bendella · Wupperstr. 14 · 51688 Wipperfürth · <span class="obf-email"></span></p></div>
     <div><h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;margin-bottom:var(--space-4)">2. Erhebung personenbezogener Daten</h2><p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.8">Beim Ausfüllen des Kontaktformulars werden Ihre Daten ausschließlich zur Beantwortung Ihrer Anfrage verwendet. Eine Weitergabe an Dritte erfolgt nicht.</p></div>
     <div><h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;margin-bottom:var(--space-4)">3. Hosting &amp; Cookies</h2><p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.8">Diese Website wird über GitHub Pages gehostet. Es werden keine Tracking-Cookies eingesetzt.</p></div>
-    <div><h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;margin-bottom:var(--space-4)">4. Ihre Rechte</h2><p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.8">Sie haben das Recht auf Auskunft, Berichtigung, Löschung (Art. 15–21 DSGVO). Wenden Sie sich an: <a href="mailto:kontakt@praxis-bendella.de" style="color:var(--color-primary)">kontakt@praxis-bendella.de</a></p></div>
+    <div><h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;margin-bottom:var(--space-4)">4. Ihre Rechte</h2><p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.8">Sie haben das Recht auf Auskunft, Berichtigung, Löschung (Art. 15–21 DSGVO). Wenden Sie sich an: <span class="obf-email"></span></p></div>
     <div><h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;margin-bottom:var(--space-4)">5. Beschwerderecht</h2><p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.8">Landesbeauftragte für Datenschutz NRW: <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener" style="color:var(--color-primary)">www.ldi.nrw.de</a></p></div>
   </div>
 </section>
@@ -102,5 +102,17 @@
   </div>
 </footer>
 <script src="main.js"></script>
+<script>
+(function(){
+  var u='kontakt',d='praxis-bendella.de';
+  document.querySelectorAll('.obf-email').forEach(function(el){
+    var a=document.createElement('a');
+    a.href='mailto:'+u+'@'+d;
+    a.textContent=u+'@'+d;
+    a.style.color='var(--color-primary)';
+    el.appendChild(a);
+  });
+})();
+</script>
 </body>
 </html>
