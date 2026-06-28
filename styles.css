@@ -423,3 +423,13 @@ footer address a{color:var(--color-primary)}
   flex-shrink: 0;
   margin-top: 7px;
 }
+
+/* ─── Über mich: centered single column ─── */
+.about-grid--centered {
+  display: block;
+  max-width: 720px;
+  margin-inline: auto;
+}
+.about-grid--centered .about-text {
+  max-width: 100%;
+}
